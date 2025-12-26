@@ -15,13 +15,16 @@ class CircleTestCase(unittest.TestCase):
         self.assertEqual(area(-5), math.pi * 25)
 
     def test_area_string(self):
-        self.assertEqual(area("5"), math.pi * 25)
+        with self.assertRaises(TypeError):
+            area("5")
 
     def test_area_list(self):
-        self.assertEqual(area([5]), math.pi * 25)
+        with self.assertRaises(TypeError):
+            area([5])
 
     def test_area_none(self):
-        self.assertEqual(area(None), 0)
+        with self.assertRaises(TypeError):
+            area(None)
 
     def test_area_boolean(self):
         self.assertEqual(area(True), math.pi * 1)
@@ -34,16 +37,19 @@ class CircleTestCase(unittest.TestCase):
         self.assertEqual(perimeter(0), 0)
 
     def test_perimeter_negative(self):
-        self.assertEqual(perimeter(-3), 2 * math.pi * 3)
+        self.assertEqual(perimeter(-3), 2 * math.pi * -3)
 
     def test_perimeter_string(self):
-        self.assertEqual(perimeter("10"), 2 * math.pi * 10)
+        with self.assertRaises(TypeError):
+            perimeter("10")
 
     def test_perimeter_list(self):
-        self.assertEqual(perimeter([3]), 2 * math.pi * 3)
+        with self.assertRaises(TypeError):
+            perimeter([3])
 
     def test_perimeter_none(self):
-        self.assertEqual(perimeter(None), 0)
+        with self.assertRaises(TypeError):
+            perimeter(None)
 
     def test_perimeter_boolean(self):
         self.assertEqual(perimeter(True), 2 * math.pi * 1)
