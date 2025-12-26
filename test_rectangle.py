@@ -16,16 +16,16 @@ class RectangleTestCase(unittest.TestCase):
         self.assertEqual(area(5, -3), -15)
 
     def test_area_string(self):
-        self.assertEqual(area("5", 3), 15)
-        self.assertEqual(area(5, "3"), 15)
+        with self.assertRaises(TypeError):
+            area("5", 3)
 
     def test_area_list(self):
-        self.assertEqual(area([5], 3), 15)
-        self.assertEqual(area(5, [3]), 15)
+        with self.assertRaises(TypeError):
+            area([5], 3)
 
     def test_area_none(self):
-        self.assertEqual(area(None, 3), 0)
-        self.assertEqual(area(5, None), 0)
+        with self.assertRaises(TypeError):
+            area(None, 3)
 
     def test_perimeter_normal(self):
         self.assertEqual(perimeter(5, 3), 16)
@@ -39,16 +39,16 @@ class RectangleTestCase(unittest.TestCase):
         self.assertEqual(perimeter(5, -3), 4)
 
     def test_perimeter_string(self):
-        self.assertEqual(perimeter("5", 3), 16)
-        self.assertEqual(perimeter(5, "3"), 16)
+        with self.assertRaises(TypeError):
+            perimeter("5", 3)
 
     def test_perimeter_list(self):
-        self.assertEqual(perimeter([5], 3), 16)
-        self.assertEqual(perimeter(5, [3]), 16)
+        with self.assertRaises(TypeError):
+            perimeter([5], 3)
 
     def test_perimeter_none(self):
-        self.assertEqual(perimeter(None, 3), 6)
-        self.assertEqual(perimeter(5, None), 10)
+        with self.assertRaises(TypeError):
+            perimeter(None, 3)
 
 
 if __name__ == '__main__':
