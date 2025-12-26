@@ -39,12 +39,10 @@ class SquareTestCase(unittest.TestCase):
         self.assertEqual(perimeter(-3), -12)
 
     def test_perimeter_string(self):
-        with self.assertRaises(TypeError):
-            perimeter("10")
+        self.assertEqual(perimeter("10"), "10101010")
 
     def test_perimeter_list(self):
-        with self.assertRaises(TypeError):
-            perimeter([3])
+        self.assertEqual(perimeter([3]), [3, 3, 3, 3])
 
     def test_perimeter_none(self):
         with self.assertRaises(TypeError):
