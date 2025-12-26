@@ -27,6 +27,10 @@ class TriangleTestCase(unittest.TestCase):
         with self.assertRaises(TypeError):
             area(None, 5)
 
+    def test_area_boolean(self):
+        self.assertEqual(area(True, 5), 2.5)
+        self.assertEqual(area(10, False), 0)
+
     def test_perimeter_normal(self):
         self.assertEqual(perimeter(3, 4, 5), 12)
 
@@ -54,6 +58,11 @@ class TriangleTestCase(unittest.TestCase):
     def test_perimeter_none(self):
         with self.assertRaises(TypeError):
             perimeter(None, 4, 5)
+
+    def test_perimeter_boolean(self):
+        self.assertEqual(perimeter(True, 4, 5), 10)
+        self.assertEqual(perimeter(3, False, 5), 8)
+        self.assertEqual(perimeter(3, 4, True), 8)
 
 
 if __name__ == '__main__':
