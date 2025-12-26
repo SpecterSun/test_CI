@@ -1,53 +1,54 @@
 import unittest
-import math
-from circle import area, perimeter
+from rectangle import area, perimeter
 
 
-class CircleTestCase(unittest.TestCase):
+class RectangleTestCase(unittest.TestCase):
 
     def test_area_normal(self):
-        self.assertEqual(area(5), math.pi * 25)
+        self.assertEqual(area(5, 3), 15)
 
     def test_area_zero(self):
-        self.assertEqual(area(0), 0)
+        self.assertEqual(area(0, 3), 0)
+        self.assertEqual(area(5, 0), 0)
 
     def test_area_negative(self):
-        with self.assertRaises(ValueError):
-            area(-5)
+        self.assertEqual(area(-5, 3), -15)
+        self.assertEqual(area(5, -3), -15)
 
     def test_area_string(self):
-        with self.assertRaises(TypeError):
-            area("5")
+        self.assertEqual(area("5", 3), 15)
+        self.assertEqual(area(5, "3"), 15)
 
     def test_area_list(self):
-        with self.assertRaises(TypeError):
-            area([5])
+        self.assertEqual(area([5], 3), 15)
+        self.assertEqual(area(5, [3]), 15)
 
     def test_area_none(self):
-        with self.assertRaises(TypeError):
-            area(None)
+        self.assertEqual(area(None, 3), 0)
+        self.assertEqual(area(5, None), 0)
 
     def test_perimeter_normal(self):
-        self.assertEqual(perimeter(5), 2 * math.pi * 5)
+        self.assertEqual(perimeter(5, 3), 16)
 
     def test_perimeter_zero(self):
-        self.assertEqual(perimeter(0), 0)
+        self.assertEqual(perimeter(0, 3), 6)
+        self.assertEqual(perimeter(5, 0), 10)
 
     def test_perimeter_negative(self):
-        with self.assertRaises(ValueError):
-            perimeter(-3)
+        self.assertEqual(perimeter(-5, 3), -4)
+        self.assertEqual(perimeter(5, -3), 4)
 
     def test_perimeter_string(self):
-        with self.assertRaises(TypeError):
-            perimeter("10")
+        self.assertEqual(perimeter("5", 3), 16)
+        self.assertEqual(perimeter(5, "3"), 16)
 
     def test_perimeter_list(self):
-        with self.assertRaises(TypeError):
-            perimeter([3])
+        self.assertEqual(perimeter([5], 3), 16)
+        self.assertEqual(perimeter(5, [3]), 16)
 
     def test_perimeter_none(self):
-        with self.assertRaises(TypeError):
-            perimeter(None)
+        self.assertEqual(perimeter(None, 3), 6)
+        self.assertEqual(perimeter(5, None), 10)
 
 
 if __name__ == '__main__':
