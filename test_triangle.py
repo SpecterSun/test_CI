@@ -8,8 +8,8 @@ class TriangleTestCase(unittest.TestCase):
         self.assertEqual(area(10, 5), 25)
 
     def test_area_zero(self):
-        self.assertEqual(area(10, 0), 0)
         self.assertEqual(area(0, 5), 0)
+        self.assertEqual(area(10, 0), 0)
 
     def test_area_negative(self):
         with self.assertRaises(ValueError):
@@ -43,10 +43,13 @@ class TriangleTestCase(unittest.TestCase):
     def test_perimeter_equal_sides(self):
         self.assertEqual(perimeter(5, 5, 5), 15)
 
-    def test_perimeter_zero(self):
-        self.assertEqual(perimeter(0, 4, 5), 9)
-        self.assertEqual(perimeter(3, 0, 5), 8)
-        self.assertEqual(perimeter(3, 4, 0), 7)
+    def test_perimeter_zero_side(self):
+        with self.assertRaises(ValueError):
+            perimeter(0, 4, 5)
+        with self.assertRaises(ValueError):
+            perimeter(3, 0, 5)
+        with self.assertRaises(ValueError):
+            perimeter(3, 4, 0)
 
     def test_perimeter_negative(self):
         with self.assertRaises(ValueError):
@@ -55,6 +58,14 @@ class TriangleTestCase(unittest.TestCase):
             perimeter(3, -4, 5)
         with self.assertRaises(ValueError):
             perimeter(3, 4, -5)
+
+    def test_perimeter_triangle_inequality(self):
+        with self.assertRaises(ValueError):
+            perimeter(1, 2, 10)
+        with self.assertRaises(ValueError):
+            perimeter(10, 2, 1)
+        with self.assertRaises(ValueError):
+            perimeter(2, 10, 1)
 
     def test_perimeter_string(self):
         with self.assertRaises(TypeError):
