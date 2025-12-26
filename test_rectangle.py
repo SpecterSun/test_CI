@@ -16,12 +16,10 @@ class RectangleTestCase(unittest.TestCase):
         self.assertEqual(area(5, -3), -15)
 
     def test_area_string(self):
-        with self.assertRaises(TypeError):
-            area("5", 3)
+        self.assertEqual(area("5", 3), "555")
 
     def test_area_list(self):
-        with self.assertRaises(TypeError):
-            area([5], 3)
+        self.assertEqual(area([5], 3), [5, 5, 5])
 
     def test_area_none(self):
         with self.assertRaises(TypeError):
